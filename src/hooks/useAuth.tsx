@@ -94,6 +94,8 @@ export function AuthProvider({children}: { children: ReactNode; }): JSX.Element 
   function logout() {
     setUser(undefined);
     destroyToken();
+
+    navigate('/')
   }
 
   const memoizedValue = useMemo(
