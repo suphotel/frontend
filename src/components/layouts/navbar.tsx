@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import {
   createStyles,
   Header,
@@ -7,10 +7,10 @@ import {
   Text,
   UnstyledButton,
   Avatar,
-  Button
+  Button,
 } from '@mantine/core';
-import { Menu } from '@mantine/core';
-import { NavLink, useNavigate } from 'react-router-dom';
+import {Menu} from '@mantine/core';
+import {NavLink, useNavigate} from 'react-router-dom';
 import {
   Logout,
   ChevronDown,
@@ -19,6 +19,7 @@ import {
 } from 'tabler-icons-react';
 import useAuth from '../../hooks/useAuth';
 import Divider = Menu.Divider;
+import {ColorSchemeToggle} from "../color-scheme-toggle";
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -90,7 +91,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export function Navbar() {
-  const { classes, cx } = useStyles();
+  const {classes, cx} = useStyles();
   const [userMenuOpened, setUserMenuOpened] = useState(false);
   const {user, logout} = useAuth();
   const navigate = useNavigate();
@@ -112,6 +113,8 @@ export function Navbar() {
           </Text>
 
           <Group>
+            <ColorSchemeToggle/>
+
             {user ? (
               <Menu
                 width={150}
@@ -121,27 +124,27 @@ export function Navbar() {
               >
                 <Menu.Target>
                   <UnstyledButton
-                    className={cx(classes.user, { [classes.userActive]: userMenuOpened })}
+                    className={cx(classes.user, {[classes.userActive]: userMenuOpened})}
                   >
                     <Group spacing={7} className={classes.burger}>
-                      <Menu2 />
+                      <Menu2/>
                     </Group>
                     <Group spacing={7} className={classes.userMenu}>
-                      <Avatar src={getProfileAvatar()} alt={user.pseudo} radius="xl" size={25} />
-                      <Text weight={500} size="sm" sx={{ lineHeight: 1 }} mr={3}>
+                      <Avatar src={getProfileAvatar()} alt={user.pseudo} radius="xl" size={25}/>
+                      <Text weight={500} size="sm" sx={{lineHeight: 1}} mr={3}>
                         {user.pseudo}
                       </Text>
-                      <ChevronDown size={12} />
+                      <ChevronDown size={12}/>
                     </Group>
                   </UnstyledButton>
                 </Menu.Target>
 
                 <Menu.Dropdown>
-                  <Menu.Item icon={<User size={14} />} onClick={() => navigate('/profile')}>Profile</Menu.Item>
+                  <Menu.Item icon={<User size={14}/>} onClick={() => navigate('/profile')}>Profile</Menu.Item>
 
-                  <Divider />
+                  <Divider/>
 
-                  <Menu.Item icon={<Logout size={14} />} onClick={handleLogout}>Logout</Menu.Item>
+                  <Menu.Item icon={<Logout size={14}/>} onClick={handleLogout}>Logout</Menu.Item>
                 </Menu.Dropdown>
               </Menu>
             ) : (
