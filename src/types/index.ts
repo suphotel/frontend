@@ -18,3 +18,8 @@ export interface LoginData {
   email: string;
   password: string;
 }
+
+export interface UpdateUserData {
+  email: string;
+  pseudo: string;
+}
