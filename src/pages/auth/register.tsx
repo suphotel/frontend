@@ -10,7 +10,7 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useNavigate } from 'react-router-dom';
-import axios, {AxiosError, AxiosResponse} from "axios";
+import axios from "axios";
 import {useState} from "react";
 
 export interface RegisterData {
@@ -44,7 +44,7 @@ export default function Register() {
 
   const handleRegister = (values: RegisterData) => {
     axios.post('/auth/register', values)
-      .then((response: AxiosResponse) => {
+      .then((response: any) => {
         // TODO: Handle response message
         navigate('/auth/login');
       })
