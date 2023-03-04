@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Button, Container, createStyles, Group, Header, Menu, Text, UnstyledButton} from '@mantine/core';
-import {NavLink, useNavigate} from 'react-router-dom';
+import {NavLink, useLocation, useNavigate} from 'react-router-dom';
 import {ChevronDown, Logout, Menu2, User,} from 'tabler-icons-react';
 import useAuth from '../../hooks/useAuth';
 import {ColorSchemeToggle} from "../color-scheme-toggle";
@@ -50,6 +50,11 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
+  linkActive: {
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+    fontWeight: 'bold',
+  },
+
   linkLabel: {
     marginRight: 5,
   },
@@ -81,6 +86,7 @@ export function Navbar() {
   const [userMenuOpened, setUserMenuOpened] = useState(false);
   const {user, logout} = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = () => {
     logout();
@@ -96,7 +102,8 @@ export function Navbar() {
             </Text>
 
             {user?.role === Role.ADMIN && (
-              <NavLink to={"/dashboard"} className={classes.link}>
+              <NavLink to={"/dashboard"}
+                       className={`${classes.link} ${location.pathname.includes('dashboard') ? classes.linkActive : ''}`}>
                 Dashboard
               </NavLink>
             )}
