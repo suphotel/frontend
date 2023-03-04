@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Avatar, Button, Container, createStyles, Group, Header, Menu, Text, UnstyledButton} from '@mantine/core';
+import {Button, Container, createStyles, Group, Header, Menu, Text, UnstyledButton} from '@mantine/core';
 import {NavLink, useNavigate} from 'react-router-dom';
 import {ChevronDown, Logout, Menu2, User,} from 'tabler-icons-react';
 import useAuth from '../../hooks/useAuth';
@@ -86,10 +86,6 @@ export function Navbar() {
     logout();
   }
 
-  const getProfileAvatar = () => {
-    return 'https://ui-avatars.com/api/?name=' + user.pseudo
-  }
-
   return (
     <Header height={56}>
       <Container size={"lg"}>
@@ -124,7 +120,6 @@ export function Navbar() {
                       <Menu2/>
                     </Group>
                     <Group spacing={7} className={classes.userMenu}>
-                      <Avatar src={getProfileAvatar()} alt={user.pseudo} radius="xl" size={25}/>
                       <Text weight={500} size="sm" sx={{lineHeight: 1}} mr={3}>
                         {user.pseudo}
                       </Text>
