@@ -36,6 +36,8 @@ export const DashboardHotelForm = ({opened, close, getHotels, hotel, unselectHot
         location: hotel.location,
         description: hotel.description,
       });
+    } else {
+      form.reset();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hotel])
