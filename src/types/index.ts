@@ -56,3 +56,9 @@ export interface CreateOrUpdateData {
   location: string;
   description: string;
 }
+
+export interface Stats {
+  usersCount: number;
+  hotelsCount: number;
+  bookingsCount: number;
+}

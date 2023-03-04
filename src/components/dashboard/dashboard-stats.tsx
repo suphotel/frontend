@@ -1,6 +1,7 @@
 import { createStyles, Group, Paper, Text, ThemeIcon, SimpleGrid } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import {BrandBooking, BuildingWarehouse, Users} from 'tabler-icons-react';
+import {Stats} from "../../types";
 
 const useStyles = createStyles((theme) => ({
   root: {
@@ -12,25 +13,26 @@ const useStyles = createStyles((theme) => ({
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
   },
 }));
-export const DashboardStats = () => {
-  const { classes, theme} = useStyles();
-  const [stats, setStats] = useState<any[]>([]);
 
-  const retrieveStats = () => {
-    setStats([
-      {title: 'Number of users', icon: <Users size={28} />, value: 12},
-      {title: 'Number of hotels', icon: <BuildingWarehouse size={28} />, value: 12},
-      {title: 'Number of bookings', icon: <BrandBooking size={28} />, value: 23},
-    ]);
-  }
+interface Props {
+  stats: Stats;
+}
+
+export const DashboardStats = ({ stats }: Props) => {
+  const { classes, theme} = useStyles();
+  const [statsArr, setStatsArr] = useState<any[]>([]);
 
   useEffect(() => {
-    retrieveStats();
-  }, [])
+    setStatsArr([
+      {title: 'Number of users', icon: <Users size={28} />, value: stats.usersCount},
+      {title: 'Number of hotels', icon: <BuildingWarehouse size={28} />, value: stats.hotelsCount},
+      {title: 'Number of bookings', icon: <BrandBooking size={28} />, value: stats.bookingsCount},
+    ]);
+  }, [stats])
 
   return (
     <SimpleGrid cols={3} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
-      {stats.map((stat, idx) => (
+      {statsArr.map((stat, idx) => (
         <div key={idx}>
           <Paper withBorder p="md" radius="md">
             <Group position="apart">
