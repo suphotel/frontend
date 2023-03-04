@@ -5,6 +5,7 @@ import {DashboardStats} from "../components/dashboard/dashboard-stats";
 import {DashboardHotels} from "../components/dashboard/hotels/dashboard-hotels";
 import {Stats} from "../types";
 import axios from "axios";
+import {DashboardUsers} from "../components/dashboard/users/dashboard-users";
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState<string>("hotels");
@@ -60,7 +61,7 @@ export default function Dashboard() {
         </Tabs.Panel>
 
         <Tabs.Panel value={"users"}>
-          Users
+          <DashboardUsers refreshStats={getStats} />
         </Tabs.Panel>
       </Tabs>
     </Container>
