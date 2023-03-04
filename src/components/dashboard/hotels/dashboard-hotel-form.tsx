@@ -1,6 +1,6 @@
 import {Alert, Box, Button, Group, Modal, Textarea, TextInput} from "@mantine/core";
 import {useForm} from "@mantine/form";
-import {CreateOrUpdateData, Hotel} from "../../../types";
+import {CreateOrUpdateHotelData, Hotel} from "../../../types";
 import axios, {AxiosError} from "axios";
 import {useEffect, useState} from "react";
 import {DashboardHotelFormUpload} from "./dashboard-hotel-form-upload";
@@ -21,7 +21,7 @@ export const DashboardHotelForm = ({opened, close, getHotels, hotel, unselectHot
   const [files, setFiles] = useState<File[]>([]);
   const [uploadLoading, setUploadLoading] = useState<boolean>(false);
 
-  const form = useForm<CreateOrUpdateData>({
+  const form = useForm<CreateOrUpdateHotelData>({
     initialValues: {
       name: '',
       location: '',
@@ -75,7 +75,7 @@ export const DashboardHotelForm = ({opened, close, getHotels, hotel, unselectHot
       .finally(() => setUploadLoading(false));
   }
 
-  const handleSubmit = (values: CreateOrUpdateData) => {
+  const handleSubmit = (values: CreateOrUpdateHotelData) => {
     setLoading(true);
 
     if (isCreating) {
@@ -108,7 +108,7 @@ export const DashboardHotelForm = ({opened, close, getHotels, hotel, unselectHot
   return (
     <>
       <Modal opened={opened} onClose={handleSimpleClose} title={formTitle}>
-        <form onSubmit={form.onSubmit((values: CreateOrUpdateData) => handleSubmit(values))}>
+        <form onSubmit={form.onSubmit((values: CreateOrUpdateHotelData) => handleSubmit(values))}>
           {(error) && (
             <Alert mb={25} color="red">
               {error.response?.data.message}

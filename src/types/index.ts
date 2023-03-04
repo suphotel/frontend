@@ -51,7 +51,7 @@ export interface UpdateUserData {
   pseudo: string;
 }
 
-export interface CreateOrUpdateData {
+export interface CreateOrUpdateHotelData {
   name: string;
   location: string;
   description: string;
