@@ -2,9 +2,36 @@ export interface User {
   id: number;
   email: string;
   pseudo: string;
-  role: string;
+  role: Role;
   updateAt: Date;
   createAt: Date;
+}
+
+export enum Role {
+  ADMIN = 'ADMIN',
+  USER = 'USER',
+}
+
+export interface Hotel {
+  id: number;
+  name: string;
+  location: string;
+  description: string;
+  images: HotelImage[];
+  updatedAt: Date;
+  createdAt: Date;
+}
+
+export interface HotelImage {
+  id: number;
+  originalName: string;
+  fileName: string;
+  mimeType: string;
+  path: string;
+  size: number;
+  hotelId: number;
+  updatedAt: Date;
+  createdAt: Date;
 }
 
 export interface RegisterData {
@@ -22,4 +49,10 @@ export interface LoginData {
 export interface UpdateUserData {
   email: string;
   pseudo: string;
+}
+
+export interface CreateOrUpdateData {
+  name: string;
+  location: string;
+  description: string;
 }

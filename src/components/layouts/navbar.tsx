@@ -1,25 +1,11 @@
 import {useState} from 'react';
-import {
-  createStyles,
-  Header,
-  Group,
-  Container,
-  Text,
-  UnstyledButton,
-  Avatar,
-  Button,
-} from '@mantine/core';
-import {Menu} from '@mantine/core';
+import {Avatar, Button, Container, createStyles, Group, Header, Menu, Text, UnstyledButton} from '@mantine/core';
 import {NavLink, useNavigate} from 'react-router-dom';
-import {
-  Logout,
-  ChevronDown,
-  Menu2,
-  User,
-} from 'tabler-icons-react';
+import {ChevronDown, Logout, Menu2, User,} from 'tabler-icons-react';
 import useAuth from '../../hooks/useAuth';
-import Divider = Menu.Divider;
 import {ColorSchemeToggle} from "../color-scheme-toggle";
+import {Role} from "../../types";
+import Divider = Menu.Divider;
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -108,9 +94,17 @@ export function Navbar() {
     <Header height={56}>
       <Container size={"lg"}>
         <div className={classes.inner}>
-          <Text className={classes.logo} color={'dark'} underline={false} component={NavLink} to={"/"}>
-            Suphotel
-          </Text>
+          <Group>
+            <Text className={classes.logo} color={'dark'} underline={false} component={NavLink} to={"/"}>
+              Suphotel
+            </Text>
+
+            {user?.role === Role.ADMIN && (
+              <NavLink to={"/dashboard"} className={classes.link}>
+                Dashboard
+              </NavLink>
+            )}
+          </Group>
 
           <Group>
             <ColorSchemeToggle/>
