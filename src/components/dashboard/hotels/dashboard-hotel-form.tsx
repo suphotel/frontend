@@ -1,6 +1,6 @@
 import {Alert, Box, Button, Group, Modal, Textarea, TextInput} from "@mantine/core";
 import {useForm} from "@mantine/form";
-import {CreateOrUpdateData, Hotel} from "../../types";
+import {CreateOrUpdateData, Hotel} from "../../../types";
 import axios, {AxiosError} from "axios";
 import {useEffect, useState} from "react";
 import {DashboardHotelFormUpload} from "./dashboard-hotel-form-upload";

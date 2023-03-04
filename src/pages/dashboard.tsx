@@ -2,7 +2,7 @@ import {Tabs, Container} from "@mantine/core";
 import {useEffect, useState} from "react";
 import {BuildingWarehouse, User} from "tabler-icons-react";
 import {DashboardStats} from "../components/dashboard/dashboard-stats";
-import {DashboardHotels} from "../components/dashboard/dashboard-hotels";
+import {DashboardHotels} from "../components/dashboard/hotels/dashboard-hotels";
 import {Stats} from "../types";
 import axios from "axios";
 

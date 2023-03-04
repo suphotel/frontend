@@ -1,4 +1,4 @@
-import {Hotel} from "../../types";
+import {Hotel} from "../../../types";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {ActionIcon, Badge, Box, Button, Center, Group, Popover, Table, Text} from "@mantine/core";

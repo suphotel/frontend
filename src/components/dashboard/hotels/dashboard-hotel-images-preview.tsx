@@ -1,4 +1,4 @@
-import {Hotel, HotelImage} from "../../types";
+import {Hotel, HotelImage} from "../../../types";
 import {ActionIcon, Alert, Box, Button, Grid, Group, Image, Modal, SimpleGrid} from "@mantine/core";
 import React, {useEffect, useState} from "react";
 import {Trash} from "tabler-icons-react";
