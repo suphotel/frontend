@@ -7,7 +7,11 @@ import {useDisclosure} from "@mantine/hooks";
 import {DashboardHotelForm} from "./dashboard-hotel-form";
 import {DashboardHotelImagesPreview} from "./dashboard-hotel-images-preview";
 
-export const DashboardHotels = () => {
+interface Props {
+  refreshStats: (withLoading: boolean) => void;
+}
+
+export const DashboardHotels = ({refreshStats}: Props) => {
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [openedHotelForm, {open: openHotelForm, close: closeHotelForm}] = useDisclosure(false);
@@ -24,7 +28,9 @@ export const DashboardHotels = () => {
 
     axios.get('/hotels')
       .then(response => {
-        setHotels(response.data)
+        setHotels(response.data);
+
+        refreshStats(false);
       })
       .catch(error => console.log(error))
       .finally(() => setLoading(false));

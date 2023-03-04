@@ -11,8 +11,8 @@ export default function Dashboard() {
   const [stats, setStates] = useState<Stats>({usersCount: 0, bookingsCount: 0, hotelsCount: 0});
   const [statsLoading, setStatsLoading] = useState<boolean>(false);
 
-  const getStats = () => {
-    setStatsLoading(true);
+  const getStats = (withLoading: boolean = true) => {
+    setStatsLoading(withLoading);
 
     axios.get('/stats')
       .then(response => {
@@ -56,7 +56,7 @@ export default function Dashboard() {
         </Tabs.List>
 
         <Tabs.Panel value={"hotels"}>
-          <DashboardHotels/>
+          <DashboardHotels refreshStats={getStats}/>
         </Tabs.Panel>
 
         <Tabs.Panel value={"users"}>
