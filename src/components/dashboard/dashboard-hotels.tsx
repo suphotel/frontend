@@ -21,6 +21,7 @@ export const DashboardHotels = ({refreshStats}: Props) => {
 
   useEffect(() => {
     getHotels();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getHotels = (withLoading: boolean = true) => {
