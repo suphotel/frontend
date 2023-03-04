@@ -12,6 +12,9 @@ export default function Dashboard() {
   const [stats, setStates] = useState<Stats>({usersCount: 0, bookingsCount: 0, hotelsCount: 0});
   const [statsLoading, setStatsLoading] = useState<boolean>(false);
 
+  const [hotelsRefreshKey, setHotelsRefreshKey] = useState<number>(0);
+  const [usersRefreshKey, setUsersRefreshKey] = useState<number>(0);
+
   const getStats = (withLoading: boolean = true) => {
     setStatsLoading(withLoading);
 
@@ -29,9 +32,11 @@ export default function Dashboard() {
 
   const handleTabChange = (tab: string) => {
     if (tab === "hotels") {
-      setActiveTab(tab)
+      setActiveTab(tab);
+      setHotelsRefreshKey(hotelsRefreshKey + 1);
     } else if (tab === "users") {
-      setActiveTab(tab)
+      setActiveTab(tab);
+      setUsersRefreshKey(usersRefreshKey + 1);
     }
   }
 
@@ -57,11 +62,11 @@ export default function Dashboard() {
         </Tabs.List>
 
         <Tabs.Panel value={"hotels"}>
-          <DashboardHotels refreshStats={getStats}/>
+          <DashboardHotels key={hotelsRefreshKey} refreshStats={getStats}/>
         </Tabs.Panel>
 
         <Tabs.Panel value={"users"}>
-          <DashboardUsers refreshStats={getStats} />
+          <DashboardUsers key={usersRefreshKey} refreshStats={getStats} />
         </Tabs.Panel>
       </Tabs>
     </Container>
