@@ -8,6 +8,7 @@ import {Navbar} from "../components/layouts/navbar";
 import {Role} from "../types";
 import Dashboard from "../pages/dashboard";
 import HotelDetails from "../pages/hotel-details";
+import Bookings from "../pages/bookings";
 
 function AppLayout() {
   return (
@@ -46,6 +47,13 @@ export default function Router() {
             <>
               <AppLayout />
               <Home />
+            </>
+          } />
+
+          <Route path={"/bookings"} element={
+            <>
+              <AppLayout />
+              <Bookings />
             </>
           } />
 

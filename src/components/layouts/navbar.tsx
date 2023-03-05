@@ -101,6 +101,11 @@ export function Navbar() {
               Suphotel
             </Text>
 
+            <NavLink to={"/bookings"}
+                     className={`${classes.link} ${location.pathname.includes('bookings') ? classes.linkActive : ''}`}>
+              Bookings
+            </NavLink>
+
             {user?.role === Role.ADMIN && (
               <NavLink to={"/dashboard"}
                        className={`${classes.link} ${location.pathname.includes('dashboard') ? classes.linkActive : ''}`}>

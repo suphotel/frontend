@@ -3,6 +3,7 @@ export interface User {
   email: string;
   pseudo: string;
   role: Role;
+  bookings: Booking[];
   updateAt: Date;
   createAt: Date;
 }
@@ -61,4 +62,14 @@ export interface Stats {
   usersCount: number;
   hotelsCount: number;
   bookingsCount: number;
+}
+
+export interface Booking {
+  id: number;
+  hotel: Hotel;
+  userId: number;
+  startDate: Date;
+  endDate: Date;
+  updatedAt: Date;
+  createdAt: Date;
 }
