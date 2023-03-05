@@ -1,4 +1,4 @@
-import {Alert, Container, Grid, SimpleGrid} from "@mantine/core";
+import {Alert, Container, Grid} from "@mantine/core";
 import {useEffect, useState} from "react";
 import {Hotel} from "../types";
 import axios from "axios";
