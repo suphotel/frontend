@@ -119,7 +119,7 @@ export const DashboardHotelForm = ({opened, close, getHotels, hotel, unselectHot
                      required={isCreating} {...form.getInputProps('name')} />
           <TextInput mb={10} label="Location" placeholder="Geneva" type='text'
                      required={isCreating} {...form.getInputProps('location')} />
-          <Textarea label="Description" placeholder="Hotel description.." autosize
+          <Textarea label="Description" placeholder="HotelDetails description.." autosize
                     required={isCreating} {...form.getInputProps('description')} />
 
           {isCreating && opened && (

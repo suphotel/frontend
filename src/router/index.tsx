@@ -7,6 +7,7 @@ import Profile from "../pages/profile";
 import {Navbar} from "../components/layouts/navbar";
 import {Role} from "../types";
 import Dashboard from "../pages/dashboard";
+import HotelDetails from "../pages/hotel-details";
 
 function AppLayout() {
   return (
@@ -45,6 +46,13 @@ export default function Router() {
             <>
               <AppLayout />
               <Home />
+            </>
+          } />
+
+          <Route path={"/hotels/:id"} element={
+            <>
+              <AppLayout />
+              <HotelDetails />
             </>
           } />
 
